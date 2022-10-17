@@ -81,7 +81,7 @@ imgpkg push -b ghcr.io/agapebondservant/kubeflow-pipelines-imgpkg:$KUBEFLOW_PACK
 cp other/metadata.yaml package-repository/packages/kubeflow-pipelines.tanzu.vmware.com
 cp other/0.1.0.yaml package-repository/packages/kubeflow-pipelines.tanzu.vmware.com/${KUBEFLOW_PACKAGE_VERSION}.yaml
 sed -i ".bak" s/0\.1\.0/$KUBEFLOW_PACKAGE_VERSION/g package-repository/packages/kubeflow-pipelines.tanzu.vmware.com/${KUBEFLOW_PACKAGE_VERSION}.yaml
-rm -f package-repository/packages/kubeflow-pipelines.tanzu.vmware.com/v0.1.0.yaml.bak
+rm -f package-repository/packages/kubeflow-pipelines.tanzu.vmware.com/${KUBEFLOW_PACKAGE_VERSION}.yaml.bak
 ```
 
 Lock images via **kbld***:
