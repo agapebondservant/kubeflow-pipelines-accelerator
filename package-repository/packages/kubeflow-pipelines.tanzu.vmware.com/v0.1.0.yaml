@@ -2,17 +2,17 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: "kubeflow-pipelines.tanzu.vmware.com.0.1.0"
+  name: "kubeflow-pipelines.tanzu.vmware.com.v0.1.0"
 spec:
   refName: kubeflow-pipelines.tanzu.vmware.com
-  version: "0.1.0"
+  version: "v0.1.0"
   releaseNotes: |
         Initial release of the Kubeflow Pipelines package
   template:
     spec:
       fetch:
       - imgpkgBundle:
-          image: "ghcr.io/agapebondservant/kubeflow-pipelines-imgpkg:0.1.0"
+          image: "ghcr.io/agapebondservant/kubeflow-pipelines-imgpkg:v0.1.0"
       template:
       - ytt:
           paths:

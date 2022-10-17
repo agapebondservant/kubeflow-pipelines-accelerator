@@ -11,4 +11,4 @@ spec:
     - name: ml-pipeline-ui
       port: 80
   virtualhost:
-    fqdn: kubeflow-pipelines.${DATA_E2E_BASE_URL}
+    fqdn: kubeflow-pipelines.tanzudatatap.ml

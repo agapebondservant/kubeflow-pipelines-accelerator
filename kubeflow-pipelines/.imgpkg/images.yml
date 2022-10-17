@@ -1,0 +1,116 @@
+---
+apiVersion: imgpkg.carvel.dev/v1alpha1
+images:
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/api-server:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/api-server:1.8.5
+  image: gcr.io/ml-pipeline/api-server@sha256:b1b67d42d8c118e6c478bbff816ac86f6a75bbadbf9978dd04d45055acd073a7
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/application-crd-controller:1.0-beta-non-cluster-role
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.0-beta-non-cluster-role
+          url: gcr.io/ml-pipeline/application-crd-controller:1.0-beta-non-cluster-role
+  image: gcr.io/ml-pipeline/application-crd-controller@sha256:83279bee01dfd56a71f99d6fe7290cf56caf6ab7670c03f73ba8410e9cfab653
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/cache-deployer:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/cache-deployer:1.8.5
+  image: gcr.io/ml-pipeline/cache-deployer@sha256:c31431aabb810b9bbae7ca2d56c165419deb2ec10fc288673c372cd62c7c784f
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/cache-server:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/cache-server:1.8.5
+  image: gcr.io/ml-pipeline/cache-server@sha256:c5a7562f39fef123e755034580a64e00ef0a6267f969744e45426423dd740911
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/frontend:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/frontend:1.8.5
+  image: gcr.io/ml-pipeline/frontend@sha256:02be101c3b2bc6ed39c8be26ffae622148ed6dc8194d96c7f2ff7e6c7895df23
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/inverse-proxy-agent:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/inverse-proxy-agent:1.8.5
+  image: gcr.io/ml-pipeline/inverse-proxy-agent@sha256:a16f99d14ae724b94b403cb9d7ac8d8f4adce33ef6a24dd91306048c0c02c7e4
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/metadata-envoy:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/metadata-envoy:1.8.5
+  image: gcr.io/ml-pipeline/metadata-envoy@sha256:4cb810df694c0638a2a5083189337e5f331fa7bca6aadde717e8b2ac3c2a2e75
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/metadata-writer:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/metadata-writer:1.8.5
+  image: gcr.io/ml-pipeline/metadata-writer@sha256:83eb1d2f5f737b16e2bea3b37a1c45a10d01062fe1415f5abd0cbf6019358aaf
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/minio:RELEASE.2019-08-14T20-37-41Z-license-compliance
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: RELEASE.2019-08-14T20-37-41Z-license-compliance
+          url: gcr.io/ml-pipeline/minio:RELEASE.2019-08-14T20-37-41Z-license-compliance
+  image: gcr.io/ml-pipeline/minio@sha256:587abc14be9bbeed794473cf7290c40e377062f2f77f5e4e27742a77680f08e0
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/mysql:5.7-debian
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 5.7-debian
+          url: gcr.io/ml-pipeline/mysql:5.7-debian
+  image: gcr.io/ml-pipeline/mysql@sha256:df28187b545543c0a69383e7cce38e826309e6748b2cfe7f55283d4e6a9e7d45
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/persistenceagent:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/persistenceagent:1.8.5
+  image: gcr.io/ml-pipeline/persistenceagent@sha256:e4b3211289ea384005cfc3576f427e02f956284e7579ecd54bba136a3c240cc7
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/scheduledworkflow:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/scheduledworkflow:1.8.5
+  image: gcr.io/ml-pipeline/scheduledworkflow@sha256:bf49fabe5decda2102183253c78efb27465a2718d2343978c0eff345b31a1ce7
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/viewer-crd-controller:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/viewer-crd-controller:1.8.5
+  image: gcr.io/ml-pipeline/viewer-crd-controller@sha256:6f9ebc9547e1bb13e7cf5faf365af41d3ccb2a2aa51607ce13f76e3a2fd00749
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/visualization-server:1.8.5
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.8.5
+          url: gcr.io/ml-pipeline/visualization-server:1.8.5
+  image: gcr.io/ml-pipeline/visualization-server@sha256:b2f1c725ce2523cde96bfc894adfad649dab963d1f18f64b5bfb622c536a2514
+- annotations:
+    kbld.carvel.dev/id: gcr.io/ml-pipeline/workflow-controller:v3.3.8-license-compliance
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: v3.3.8-license-compliance
+          url: gcr.io/ml-pipeline/workflow-controller:v3.3.8-license-compliance
+  image: gcr.io/ml-pipeline/workflow-controller@sha256:6c8e4e2a644376e53803b449d64168740c9ada2754a8e958feb308aef8db898d
+- annotations:
+    kbld.carvel.dev/id: gcr.io/tfx-oss-public/ml_metadata_store_server:1.5.0
+    kbld.carvel.dev/origins: |
+      - resolved:
+          tag: 1.5.0
+          url: gcr.io/tfx-oss-public/ml_metadata_store_server:1.5.0
+  image: gcr.io/tfx-oss-public/ml_metadata_store_server@sha256:db8691752b4cd02658e4bb28b73d34a18ba71f49d6cc124a47c0c5001f8c0f83
+kind: ImagesLock
