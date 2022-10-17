@@ -30,7 +30,7 @@ tanzu package install kubeflow-pipelines --package-name kubeflow-pipelines.tanzu
 
 *Verify that the installation was successful:
 ```
-tanzu package installed get kubeflow-pipelines -nmlops
+tanzu package installed get kubeflow-pipelines -nmlops-tools
 ```
 
 
