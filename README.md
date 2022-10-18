@@ -63,6 +63,7 @@ kubectl apply -f kubeflow-pipelines/config/cluster-scoped-resources.yaml
 kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION" -oyaml --dry-run=client > kubeflow-pipelines/config/install.yaml
 envsubst < other/kfp-http-proxy.in.yaml > other/kfp-http-proxy.yaml
 mv other/kfp-http-proxy.yaml kubeflow-pipelines/config/
+cp other/patch.yaml kubeflow-pipelines/config/patch.yaml
 kubectl delete -f kubeflow-pipelines/config/cluster-scoped-resources.yaml
 ```
 
