@@ -36,13 +36,14 @@ tanzu package installed get kubeflow-pipelines -nmlops-tools
 
 ### Build Carvel Package for Kubeflow Pipelines
 
-* Set up local variables - update as appropriate. (NOTE: Must set up an access token in github - see [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token))
+* Set up local variables - update as appropriate. 
+* (NOTE: To use GHCR, you must set up an access token in github - see [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token))
 ```
 export PIPELINE_VERSION=1.8.5
 export KUBEFLOW_PACKAGE_VERSION=0.0.1
-export GITHUB_USER_NAME=agapebondservant
+export GITHUB_USER_NAME=your-github-user-name
 export GHCR_REPO=ghcr.io/$GITHUB_USER_NAME/kubeflow:$KUBEFLOW_PACKAGE_VERSION
-export DATA_E2E_BASE_URL=tanzudatatap.ml
+export DATA_E2E_BASE_URL=your-kubeflow-base-url.com
 ```
 
 * Login to GHCR_REPO - enter the username and access token from above when prompted:
@@ -97,3 +98,5 @@ imgpkg push -b ghcr.io/agapebondservant/kubeflow-pipelines:${KUBEFLOW_PACKAGE_VE
 Next, on Github, ensure that the packages ghcr.io/agapebondservant/kubeflow-pipelines:${KUBEFLOW_PACKAGE_VERSION} and
 ghcr.io/agapebondservant/kubeflow-pipelines-imgpkg:${KUBEFLOW_PACKAGE_VERSION} have been marked as **Public**.
 See [here](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility)
+
+With that, you should be able to access Kubeflow Pipelines at http://kubeflow-pipelines.<DATA_E2E_BASE_URL>.
