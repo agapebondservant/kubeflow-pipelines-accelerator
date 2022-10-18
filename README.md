@@ -1,4 +1,4 @@
-# MLOps Accelerator
+# Kubeflow Pipelines Accelerator
 Template for building a Carvel Package/PackageRepository for installing Kubeflow Pipelines on TAP.
 
 * Install App Accelerator: (see https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-cert-mgr-contour-fcd-install-cert-mgr.html)
@@ -12,7 +12,7 @@ Get the IP address for the App Accelerator API: kubectl get service -n accelerat
 Publish Accelerators:
 ```
 tanzu plugin install --local <path-to-tanzu-cli> all
-tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebondservant/kubeflow.git --git-branch main
+tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator --git-branch main
 ```
 
 ### Install Kubeflow Pipelines on TAP
