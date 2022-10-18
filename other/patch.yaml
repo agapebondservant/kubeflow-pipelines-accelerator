@@ -1,6 +1,26 @@
 $patch: delete
 apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: proxy-agent
-  namespace: kubeflow
+  kind: Deployment
+  metadata:
+    labels:
+      app: proxy-agent
+      application-crd-id: kubeflow-pipelines
+    name: proxy-agent
+    namespace: kubeflow
+  spec:
+    selector:
+      matchLabels:
+        app: proxy-agent
+        application-crd-id: kubeflow-pipelines
+    template:
+      metadata:
+        labels:
+          app: proxy-agent
+          application-crd-id: kubeflow-pipelines
+      spec:
+        containers:
+          - image: gcr.io/ml-pipeline/inverse-proxy-agent:1.8.5
+            imagePullPolicy: IfNotPresent
+            name: proxy-agent
+        hostNetwork: true
+        serviceAccountName: proxy-agent-runner
