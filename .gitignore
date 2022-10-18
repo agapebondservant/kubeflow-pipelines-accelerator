@@ -1,3 +1,4 @@
 kubeflow-pipelines/
 package-repository//
 package-repository/
+other/kfp-http-proxy.yaml
