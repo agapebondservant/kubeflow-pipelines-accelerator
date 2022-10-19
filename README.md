@@ -33,6 +33,11 @@ tanzu package install kubeflow-pipelines --package-name kubeflow-pipelines.tanzu
 tanzu package installed get kubeflow-pipelines -nmlops-tools
 ```
 
+With that, you should be able to access Kubeflow Pipelines at 
+```
+http://kubeflow-pipelines.<DATA_E2E_BASE_URL>
+```
+
 
 ### Build Carvel Package for Kubeflow Pipelines
 
@@ -98,5 +103,3 @@ imgpkg push -b ghcr.io/agapebondservant/kubeflow-pipelines:${KUBEFLOW_PACKAGE_VE
 Next, on Github, ensure that the packages ghcr.io/agapebondservant/kubeflow-pipelines:${KUBEFLOW_PACKAGE_VERSION} and
 ghcr.io/agapebondservant/kubeflow-pipelines-imgpkg:${KUBEFLOW_PACKAGE_VERSION} have been marked as **Public**.
 See [here](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility)
-
-With that, you should be able to access Kubeflow Pipelines at http://kubeflow-pipelines.<DATA_E2E_BASE_URL>.
