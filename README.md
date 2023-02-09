@@ -37,6 +37,12 @@ With that, you should be able to access Kubeflow Pipelines at
 ```
 http://kubeflow-pipelines.<DATA_E2E_BASE_URL>
 ```
+To uninstall:
+```
+tanzu package installed delete kubeflow-pipelines --namespace mlops-tools  -y
+tanzu package repository delete kubeflow-pipelines --namespace mlops-tools  -y
+kubectl delete ns mlops-tools
+```
 
 
 ### Build Carvel Package for Kubeflow Pipelines
