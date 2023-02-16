@@ -20,28 +20,39 @@ tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebond
 * Install PackageRepository for Kubeflow Pipelines:
 ```
 export KUBEFLOW_PACKAGE_VERSION=0.0.1
-tanzu package repository add kubeflow-pipelines --url ghcr.io/agapebondservant/kubeflow-pipelines:$KUBEFLOW_PACKAGE_VERSION -n mlops-tools --create-namespace
+export KUBEFLOW_PIPELINES_NAMESPACE=mlops-tools
+tanzu package repository add kubeflow-pipelines --url ghcr.io/agapebondservant/kubeflow-pipelines:$KUBEFLOW_PACKAGE_VERSION -n ${KUBEFLOW_PIPELINES_NAMESPACE} --create-namespace
+```
+
+Verify that the Kubeflow Pipelines package is available for install:
+```
+tanzu package available list kubeflow-pipelines.tanzu.vmware.com --namespace ${KUBEFLOW_PIPELINES_NAMESPACE} 
+```
+
+Generate a values.yaml file to use for the install - update as desired:
+```
+other/scripts/generate-values-yaml.sh other/kubeflow-values.yaml #replace other/kubeflow-values.yaml with /path/to/your/values/yaml/file
 ```
 
 * Install Package for Kubeflow Pipelines:
 ```
-tanzu package install kubeflow-pipelines --package-name kubeflow-pipelines.tanzu.vmware.com --version $KUBEFLOW_PACKAGE_VERSION -n mlops-tools
+tanzu package install kubeflow-pipelines --package-name kubeflow-pipelines.tanzu.vmware.com --version $KUBEFLOW_PACKAGE_VERSION -n ${KUBEFLOW_PIPELINES_NAMESPACE} --values-file other/kubeflow-values.yaml
 ```
 
 *Verify that the installation was successful:
 ```
-tanzu package installed get kubeflow-pipelines -nmlops-tools
+tanzu package installed get kubeflow-pipelines -n${KUBEFLOW_PIPELINES_NAMESPACE}
 ```
 
 With that, you should be able to access Kubeflow Pipelines at 
 ```
-http://kubeflow-pipelines.<DATA_E2E_BASE_URL>
+http://<KUBEFLOW_PIPELINES_FQDN>
 ```
 To uninstall:
 ```
-tanzu package installed delete kubeflow-pipelines --namespace mlops-tools  -y
-tanzu package repository delete kubeflow-pipelines --namespace mlops-tools  -y
-kubectl delete ns mlops-tools
+tanzu package installed delete kubeflow-pipelines --namespace ${KUBEFLOW_PIPELINES_NAMESPACE}  -y
+tanzu package repository delete kubeflow-pipelines --namespace ${KUBEFLOW_PIPELINES_NAMESPACE}  -y
+kubectl delete ns ${KUBEFLOW_PIPELINES_NAMESPACE}
 ```
 
 
@@ -54,56 +65,13 @@ export PIPELINE_VERSION=1.8.5
 export KUBEFLOW_PACKAGE_VERSION=0.0.1
 export GITHUB_USER_NAME=your-github-user-name
 export GHCR_REPO=ghcr.io/$GITHUB_USER_NAME/kubeflow:$KUBEFLOW_PACKAGE_VERSION
-export DATA_E2E_BASE_URL=your-kubeflow-base-url.com
+export KUBEFLOW_PIPELINES_FQDN=your-full-kubeflow-url
+export KUBEFLOW_PIPELINES_NAMESPACE=your-kubeflow-namespace
 ```
 
-* Login to GHCR_REPO - enter the username and access token from above when prompted:
+* Generate the Package Repository:
 ```
-docker login ghcr.io
-```
-
-* Create directories:
-```
-mkdir kubeflow-pipelines && mkdir kubeflow-pipelines/.imgpkg && mkdir kubeflow-pipelines/config
-mkdir package-repository && mkdir package-repository/.imgpkg && mkdir package-repository/packages && mkdir package-repository/packages/kubeflow-pipelines.tanzu.vmware.com
-```
-
-* Generate template files:
-```
-kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION" -oyaml --dry-run=client > kubeflow-pipelines/config/cluster-scoped-resources.yaml
-kubectl apply -f kubeflow-pipelines/config/cluster-scoped-resources.yaml
-kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION" -oyaml --dry-run=client > kubeflow-pipelines/config/install.yaml
-envsubst < other/kfp-http-proxy.in.yaml > other/kfp-http-proxy.yaml
-mv other/kfp-http-proxy.yaml kubeflow-pipelines/config/
-kubectl delete -f kubeflow-pipelines/config/cluster-scoped-resources.yaml
-```
-
-* Lock images via **kbld**:
-```
-kbld -f kubeflow-pipelines/config/ --imgpkg-lock-output kubeflow-pipelines/.imgpkg/images.yml
-```
-
-* Push the locked images and templates for **kubeflow-pipelines** to the container registry:
-```
-imgpkg push -b ghcr.io/agapebondservant/kubeflow-pipelines-imgpkg:$KUBEFLOW_PACKAGE_VERSION -f kubeflow-pipelines/
-```
-
-* Update and copy the **package** files:
-```
-cp other/metadata.yaml package-repository/packages/kubeflow-pipelines.tanzu.vmware.com
-cp other/0.1.0.yaml package-repository/packages/kubeflow-pipelines.tanzu.vmware.com/${KUBEFLOW_PACKAGE_VERSION}.yaml
-sed -i ".bak" s/0\.1\.0/$KUBEFLOW_PACKAGE_VERSION/g package-repository/packages/kubeflow-pipelines.tanzu.vmware.com/${KUBEFLOW_PACKAGE_VERSION}.yaml
-rm -f package-repository/packages/kubeflow-pipelines.tanzu.vmware.com/${KUBEFLOW_PACKAGE_VERSION}.yaml.bak
-```
-
-Lock images via **kbld***:
-```
-kbld -f package-repository/packages/ --imgpkg-lock-output package-repository/.imgpkg/images.yml
-```
-
-Push the locked images and templates for the **kubeflow-pipelines** package to the container registry:
-```
-imgpkg push -b ghcr.io/agapebondservant/kubeflow-pipelines:${KUBEFLOW_PACKAGE_VERSION} -f package-repository/
+other/scripts/package-script.sh
 ```
 
 Next, on Github, ensure that the packages ghcr.io/agapebondservant/kubeflow-pipelines:${KUBEFLOW_PACKAGE_VERSION} and

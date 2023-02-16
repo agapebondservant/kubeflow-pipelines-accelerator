@@ -1,3 +1,5 @@
+#@ load("@ytt:data", "data")
+---
 apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
@@ -11,4 +13,4 @@ spec:
     - name: ml-pipeline-ui
       port: 80
   virtualhost:
-    fqdn: kubeflow-pipelines.${DATA_E2E_BASE_URL}
+    fqdn: #@ data.values.full_url

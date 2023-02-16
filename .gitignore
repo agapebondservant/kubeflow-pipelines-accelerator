@@ -1,4 +1,5 @@
 kubeflow-pipelines/
 package-repository//
 package-repository/
-other/kfp-http-proxy.yaml
+other/kubeflow-values.yaml
+other/schema-openapi.yaml
