@@ -77,3 +77,16 @@ other/scripts/package-script.sh
 Next, on Github, ensure that the packages ghcr.io/agapebondservant/kubeflow-pipelines:${KUBEFLOW_PACKAGE_VERSION} and
 ghcr.io/agapebondservant/kubeflow-pipelines-imgpkg:${KUBEFLOW_PACKAGE_VERSION} have been marked as **Public**.
 See [here](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility)
+
+### Deploy a sample pipeline
+* To deploy the sample pipeline code:
+```
+export MLFLOW_STAGE=<the-mlflow-stage> # ex. Staging
+export GITHUB_USER_NAME=your-github-user-name
+export GIT_REPO=github.com/${GITHUB_USER_NAME}/ml-image-processing-app-kfpipeline-driver.git
+export EXPERIMENT_NAME=your-experiment-name #ex. kfp-main
+export ENVIRONMENT_NAME=your-environment-name #ex. Staging
+export KUBEFLOW_PIPELINES_HOST=your-full-kubeflow-pipelines-fqdn #ex. kfp.my-kubeflow.com
+export USE_CACHE=nocache # if not nocache, will cache pipeline steps
+python ./app/main.py
+```
