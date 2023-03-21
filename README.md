@@ -63,10 +63,10 @@ kubectl delete ns ${KUBEFLOW_PIPELINES_NAMESPACE}
 ```
 export PIPELINE_VERSION=1.8.5
 export KUBEFLOW_PACKAGE_VERSION=0.0.1
-export GITHUB_USER_NAME=your-github-user-name
+export GITHUB_USER_NAME=oawofolu #your-github-user-name
 export GHCR_REPO=ghcr.io/$GITHUB_USER_NAME/kubeflow:$KUBEFLOW_PACKAGE_VERSION
-export KUBEFLOW_PIPELINES_FQDN=your-full-kubeflow-url
-export KUBEFLOW_PIPELINES_NAMESPACE=your-kubeflow-namespace
+export KUBEFLOW_PIPELINES_FQDN=kubeflow-pipelines.tanzumlai.com #your-full-kubeflow-url
+export KUBEFLOW_PIPELINES_NAMESPACE=mlops-tools #your-kubeflow-namespace
 ```
 
 * Generate the Package Repository:
