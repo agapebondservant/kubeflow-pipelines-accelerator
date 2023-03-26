@@ -78,6 +78,28 @@ Next, on Github, ensure that the packages ghcr.io/agapebondservant/kubeflow-pipe
 ghcr.io/agapebondservant/kubeflow-pipelines-imgpkg:${KUBEFLOW_PACKAGE_VERSION} have been marked as **Public**.
 See [here](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility)
 
+### Integrate with TAP GUI
+
+* Deploy the app (on TAP):
+```
+tanzu apps workload create kubeflow-pipelines-tap -f other/tapworkloads/workload.yaml --yes
+```
+
+* Tail the logs of the main app:
+```
+tanzu apps workload tail kubeflow-pipelines-tap --since 64h
+```
+
+* Once deployment succeeds, get the URL for the main app:
+```
+tanzu apps workload get kubeflow-pipelines-tap     #should yield kubeflow-pipelines.default.<your-domain>
+```
+
+* To delete the app:
+```
+tanzu apps workload delete kubeflow-pipelines-tap --yes
+```
+
 ### Deploy a sample pipeline
 * To deploy the sample pipeline code:
 ```
