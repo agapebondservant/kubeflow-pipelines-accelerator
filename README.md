@@ -82,22 +82,22 @@ See [here](https://docs.github.com/en/packages/learn-github-packages/configuring
 
 * Deploy the app (on TAP):
 ```
-tanzu apps workload create kubeflow-pipelines-tap -f other/tapworkloads/workload.yaml --yes
+tanzu apps workload create kubeflowpipelines-tap -f other/tapworkloads/workload.yaml --yes
 ```
 
 * Tail the logs of the main app:
 ```
-tanzu apps workload tail kubeflow-pipelines-tap --since 64h
+tanzu apps workload tail kubeflowpipelines-tap --since 64h
 ```
 
 * Once deployment succeeds, get the URL for the main app:
 ```
-tanzu apps workload get kubeflow-pipelines-tap     #should yield kubeflow-pipelines.default.<your-domain>
+tanzu apps workload get kubeflowpipelines-tap     #should yield kubeflow-pipelines.default.<your-domain>
 ```
 
 * To delete the app:
 ```
-tanzu apps workload delete kubeflow-pipelines-tap --yes
+tanzu apps workload delete kubeflowpipelines-tap --yes
 ```
 
 ### Deploy a sample pipeline
