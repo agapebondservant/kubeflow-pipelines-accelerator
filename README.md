@@ -21,7 +21,8 @@ tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebond
 ```
 export KUBEFLOW_PACKAGE_VERSION=0.0.1
 export KUBEFLOW_PIPELINES_NAMESPACE=mlops-tools
-tanzu package repository add kubeflow-pipelines --url ghcr.io/agapebondservant/kubeflow-pipelines:$KUBEFLOW_PACKAGE_VERSION -n ${KUBEFLOW_PIPELINES_NAMESPACE} --create-namespace
+kubectl create ns $KUBEFLOW_PIPELINES_NAMESPACE || true
+tanzu package repository add kubeflow-pipelines --url ghcr.io/agapebondservant/kubeflow-pipelines:$KUBEFLOW_PACKAGE_VERSION -n ${KUBEFLOW_PIPELINES_NAMESPACE}
 ```
 
 Verify that the Kubeflow Pipelines package is available for install:
@@ -36,7 +37,7 @@ other/scripts/generate-values-yaml.sh other/kubeflow-values.yaml #replace other/
 
 * Install Package for Kubeflow Pipelines:
 ```
-tanzu package install kubeflow-pipelines --package-name kubeflow-pipelines.tanzu.vmware.com --version $KUBEFLOW_PACKAGE_VERSION -n ${KUBEFLOW_PIPELINES_NAMESPACE} --values-file other/kubeflow-values.yaml
+tanzu package install kubeflow-pipelines -p kubeflow-pipelines.tanzu.vmware.com --version $KUBEFLOW_PACKAGE_VERSION -n ${KUBEFLOW_PIPELINES_NAMESPACE} --values-file other/kubeflow-values.yaml
 ```
 
 *Verify that the installation was successful:
