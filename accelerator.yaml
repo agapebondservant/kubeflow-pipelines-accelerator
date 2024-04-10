@@ -1,7 +1,7 @@
 accelerator:
   displayName: Kubeflow Pipelines Accelerator
   description: Project template for deploying Kubeflow Pipelines to a Kubernetes cluster or TAP
-  iconUrl: https://upload.wikimedia.org/wikipedia/commons/1/1b/ML_Ops_Venn_Diagram.svg
+  iconUrl: https://user-images.githubusercontent.com/5319646/37641015-10cb00f6-2c53-11e8-9195-65f2dbc60955.jpg
   tags:
   - "ML"
   - "AI"
@@ -9,7 +9,53 @@ accelerator:
   - "datascience"
   - "MLOps"
   - "artificialintelligence"
-  - "python"
-  - "java"
-  - "R"
+  - "pipeline"
   - "kubeflow"
+  options:
+    - name: kubeflow_pipelines
+      inputType: radio
+      display: true
+      choices:
+        - text: 'Kubeflow Pipelines (ML Training / ML Deployment and Serving / ML Notebooks)'
+          value: selected
+      defaultValue: selected
+      dependsOn:
+        name: mlPlatformType
+        value: training
+    - name: mlPlatformType
+      inputType: radio
+      display: true
+      choices:
+        - text: 'View guidance manual: https://www.kubeflow.org/docs/components/pipelines/v1/installation/standalone-deployment/#deploying-kubeflow-pipelines'
+          value: training
+      defaultValue: training
+    - name: kubeflowPipelinesNamespace
+      inputType: text
+      display: true
+      label: 'Target namespace'
+      defaultValue: 'kubeflow'
+      dependsOn:
+        name: mlPlatformType
+        value: training
+    - name: kubeflowPipelinesDomain
+      inputType: text
+      display: true
+      label: 'Fully qualified domain name (FQDN)'
+      required: true
+      dependsOn:
+        name: mlPlatformType
+        value: training
+engine:
+  type: Merge
+  sources:
+    - type: Chain
+      transformations:
+        - type: Include
+          patterns: [ 'resources/**/*.yaml' ]
+        - type: ReplaceText
+          substitutions:
+            - text: REPLACE_KUBEFLOW_PIPELINES_NAMESPACE
+              with: "#kubeflowPipelinesNamespace"
+            - text: REPLACE_KUBEFLOW_PIPELINES_FQDN
+              with: "#kubeflowPipelinesDomain"
+
