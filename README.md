@@ -17,5 +17,5 @@ tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebond
 
 Publish Fragments:
 ```
-tanzu acc fragment create kubeflowpipelines-fragment --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator.git --git-branch bitnami
+tanzu acc fragment create kubeflow-pipelines-fragment --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator.git --git-branch bitnami
 ```
