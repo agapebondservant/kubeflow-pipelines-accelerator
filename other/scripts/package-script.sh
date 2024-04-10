@@ -1,5 +1,5 @@
 # Login to GHCR_REPO - enter the username and access token from above when prompted:
-docker login ghcr.io
+echo $GITHUB_TOKEN | docker login ghcr.io -u $GITHUB_USER_NAME --password-stdin
 
 # Create directories:
 rm -rf kubeflow-pipelines && rm -rf package-repository

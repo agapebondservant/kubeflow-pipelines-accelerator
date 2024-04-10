@@ -21,6 +21,7 @@ tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebond
 ```
 export KUBEFLOW_PACKAGE_VERSION=0.0.1
 export KUBEFLOW_PIPELINES_NAMESPACE=mlops-tools
+export KUBEFLOW_PIPELINES_FQDN=kubeflow-pipelines.tanzudatatap.com #your-full-kubeflow-url
 kubectl create ns $KUBEFLOW_PIPELINES_NAMESPACE || true
 tanzu package repository add kubeflow-pipelines --url ghcr.io/agapebondservant/kubeflow-pipelines:$KUBEFLOW_PACKAGE_VERSION -n ${KUBEFLOW_PIPELINES_NAMESPACE}
 ```
@@ -64,10 +65,11 @@ kubectl delete ns ${KUBEFLOW_PIPELINES_NAMESPACE}
 ```
 export PIPELINE_VERSION=1.8.5
 export KUBEFLOW_PACKAGE_VERSION=0.0.1
-export GITHUB_USER_NAME=oawofolu #your-github-user-name
+export GITHUB_USER_NAME=agapebondservant #your-github-user-name
 export GHCR_REPO=ghcr.io/$GITHUB_USER_NAME/kubeflow:$KUBEFLOW_PACKAGE_VERSION
-export KUBEFLOW_PIPELINES_FQDN=kubeflow-pipelines.tanzumlai.com #your-full-kubeflow-url
+export KUBEFLOW_PIPELINES_FQDN=kubeflow-pipelines.tanzudatatap.com #your-full-kubeflow-url
 export KUBEFLOW_PIPELINES_NAMESPACE=mlops-tools #your-kubeflow-namespace
+export GITHUB_TOKEN= #your-github-token
 ```
 
 * Generate the Package Repository:
@@ -83,7 +85,7 @@ See [here](https://docs.github.com/en/packages/learn-github-packages/configuring
 
 * Deploy the app (on TAP):
 ```
-tanzu apps workload create kubeflow-tap -f other/tapworkloads/workload.yaml --yes
+tanzu apps workload create kubeflow-tap -f other/tapworkloads/workload.yaml --yes 
 ```
 
 * Tail the logs of the main app:
