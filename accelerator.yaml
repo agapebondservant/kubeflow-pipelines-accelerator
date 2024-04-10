@@ -41,7 +41,7 @@ accelerator:
       inputType: text
       display: true
       label: 'Fully qualified domain name (FQDN)'
-      required: true
+      defaultValue: 'yourdomain.com'
       dependsOn:
         name: mlPlatformType
         value: training
