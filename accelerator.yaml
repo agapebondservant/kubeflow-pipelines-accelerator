@@ -12,7 +12,7 @@ accelerator:
   - "pipeline"
   - "kubeflow"
   options:
-    - name: kubeflow_pipelines
+    - name: kubeflowpipelines
       inputType: radio
       display: true
       choices:
