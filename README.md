@@ -21,7 +21,7 @@ tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebond
 ```
 export KUBEFLOW_PACKAGE_VERSION=0.0.1
 export KUBEFLOW_PIPELINES_NAMESPACE=mlops-tools
-export KUBEFLOW_PIPELINES_FQDN=kubeflow-pipelines.tanzudatatap.com #your-full-kubeflow-url
+export KUBEFLOW_PIPELINES_FQDN=kubeflow-pipelines.tanzumlai.com #your-full-kubeflow-url
 kubectl create ns $KUBEFLOW_PIPELINES_NAMESPACE || true
 tanzu package repository add kubeflow-pipelines --url ghcr.io/agapebondservant/kubeflow-pipelines:$KUBEFLOW_PACKAGE_VERSION -n ${KUBEFLOW_PIPELINES_NAMESPACE}
 ```
