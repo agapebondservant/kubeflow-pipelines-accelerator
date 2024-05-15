@@ -9,7 +9,7 @@ resources:
 - ../third-party/argo/installs/namespace/cluster-scoped
 - ../base/pipeline/cluster-scoped
 - ../base/cache-deployer/cluster-scoped
-- ../projectcontour
+- ../httpproxy.yaml
 vars:
 # NOTE: var name must be unique globally to allow composition of multiple kustomize
 # packages. Therefore, we added prefix `kfp-cluster-scoped-` to distinguish it from
