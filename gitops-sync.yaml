@@ -2,14 +2,29 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: REPLACE_KUBEFLOW_PIPELINES_NAMESPACE
+  name: kfp-cluster-scoped
   namespace: flux-system
 spec:
   interval: 2m
   sourceRef:
     kind: GitRepository
     name: mlops-flux-system
-  path: ./kubeflow-pipelines/2.1.0
+  path: ./kubeflow-pipelines/2.1.0/kustomize/cluster-scoped-resources
+  prune: true
+  wait: true
+  timeout: 10m0s
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: kfp-env-dev
+  namespace: flux-system
+spec:
+  interval: 2m
+  sourceRef:
+    kind: GitRepository
+    name: mlops-flux-system
+  path: ./kubeflow-pipelines/2.1.0/kustomize/env/dev
   prune: true
   wait: true
   timeout: 10m0s
