@@ -1,5 +1,2 @@
-kubeflow-pipelines/
 package-repository//
 package-repository/
-other/kubeflow-values.yaml
-other/schema-openapi.yaml
