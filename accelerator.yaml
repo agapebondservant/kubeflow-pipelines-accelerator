@@ -50,8 +50,6 @@ engine:
   sources:
     - type: Chain
       transformations:
-        - type: Include
-          patterns: [ '**/**.yaml' ]
         - type: ReplaceText
           substitutions:
             - text: REPLACE_KUBEFLOW_PIPELINES_NAMESPACE
