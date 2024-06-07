@@ -50,10 +50,10 @@ engine:
   sources:
     - type: Chain
       transformations:
-        - type: Include
-          patterns: [ 'kubeflow-pipelines/**', '*.yaml' ]
         - type: Exclude
           patterns: [ 'catalog-info.yaml' ]
+        - type: Include
+          patterns: [ 'kubeflow-pipelines/**', '*.yaml' ]
         - type: ReplaceText
           substitutions:
             - text: REPLACE_KUBEFLOW_PIPELINES_NAMESPACE
