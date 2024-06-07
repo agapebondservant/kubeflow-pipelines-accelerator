@@ -52,6 +52,8 @@ engine:
       transformations:
         - type: Include
           patterns: [ 'kubeflow-pipelines/**', '*.yaml' ]
+        - type: Exclude
+          patterns: [ 'catalog-info.yaml' ]
         - type: ReplaceText
           substitutions:
             - text: REPLACE_KUBEFLOW_PIPELINES_NAMESPACE
